@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<link rel="stylesheet" href="./public/main.css">
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">Star Wars!</a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        
+		      </ul>
+		      
+		      
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+		
+
+		<div class="container">
+			<div class="input-group">
+				<input type="text" class="form-control" id="input">
+				<span class="input-group-btn">
+					<button class="btn btn-primary" id="searchButton">
+						Search
+					</button>
+				</span>
+			</div>
+			<hr>
+			<h4>Episode:</h4>
+			<ul id="friendsList"></ul>
+
+			<div class="well" id="output"></div>
+		</div>
+
+		<hr>
+
+		<hr>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<table class="col-md-12 table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>Planets</th>
+								</tr>
+							</thead>
+							<tbody id="pBody"></tbody>	
+						</table>	
+					</div>	
+					<div class="col-md-6">
+						<table class="col-md-12 table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>Starships</th>
+								</tr>
+							</thead>
+							<tbody id="sBody"></tbody>	
+						</table>
+					</div>		
+				</div>
+			</div>
+
+	
+
+		<script src="./public/main.js"></script>
+	</body>
+</html>

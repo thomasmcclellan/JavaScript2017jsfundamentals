@@ -1,54 +1,68 @@
-$(document).ready(function() {
-	// let names;
+
+let $friends = $('#friends');
+let $name = $('#name ');
+let $age = $('#age');
+
+let friendTemplate = '' + 
+	'<li>' + 
+	'<p><strong>Name:</strong> {{name}}</p>' + 
+	'<p><strong>Age:</strong> {{age}}</p>' + 
+	'<button id="{{id}}" class="remove">X</button>' + 
+	'</li>';
+
+function addFriend(friend){
+	$friends.append(Mustache.render(friendTemplate, friend));
+};
+
+$(document).ready(function(){
 	
-	// $.ajax({
-	// 	type: 'GET',
-	// 	url: 'http://rest.learncode.academy/api/learncode/javascriptfall'
-	// }).done(function(data) {
-	// 	names = data;
-	// 	console.log(data);
-	// 	console.log(names);
-	// })
+	$.ajax({
+		type: 'GET',
+		url: 'http://rest.learncode.academy/api/learncode/javascriptfall', 
+		success: function(friends){
+			$.each(friends, function(i, friend){
+				addFriend(friend);
+			});
+		},
 
-	// console.log("Hello");
-	// console.log(names);
-
-	// let person = {
-	// 	name: 'Tom',
-	// 	email: 'thomasmcclellan87@gmail.com'
-	// }
-
-	// $.ajax({
-	// 	type: 'POST',
-	// 	url: 'http://rest.learncode.academy/api/learncode/javascriptfall',
-	// 	data: person
-	// }).done(function(info){
-	// 	console.log(info);
-	// })
-
-	
-
-	$(submit).click(signUp);
-
-	function signUp() {
-		let person = {
-			name: $(name).val(),
-			email: $(email).val()
+		error: function(){
+			alert('error loading friends');
 		}
+	});
 
-		
-			$.ajax({
-				type: 'POST',
-				url: 'http://rest.learncode.academy/api/learncode/javascriptfall',
-				data: person
-			}).done(function(data){
-				console.log(person);
-				console.log(data);
-			})
-		
-	}
+	$('#add-friend').on('click', function(){
 
+		let friend = {
+				name: $name.val(),
+				age: $age.val()
+		};
+		$.ajax({
+			type: 'POST',
+			url: 'http://rest.learncode.academy/api/learncode/friends',
+			data: friend,
+			success: function(newFriend){
+				addFriend(newFriend);
+			}, 
+			error: function(){
+				alert('error saving order');
+			}
+		});
+	});
 
+	//delegate allows you to remove items that were loaded by other students
+	$friends.delegate('.remove', 'click', function(){
+
+		//Here, we have to add 'var', not 'let'
+		var $li = $(this).closest('li');
+		//AJAX DELETE Function - click the .remove class button and the id identifies what to delet
+		$.ajax({
+			type: 'DELETE',
+			url: 'http://rest.learncode.academy/api/learncode/friends/' + $(this).attr('id'),
+			success: function(){
+				$li.fadeOut(300, function(){
+					$(this).remove();
+				});
+			}
+		});
+	});
 });
-
-

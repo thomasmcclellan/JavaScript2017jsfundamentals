@@ -34,11 +34,12 @@ a2.speak = function(){
 //Links up with .identify, and, thus, to Foo()
 a1.constructor === Foo;
 a1.constructor === a2.constructor;
-//There is no Dunder proto on a1
+//There is no __proto__ on a1
 	//Likewise, it moves up the [[P]]s to find one
-//There is a Dunder proto in the built-in object prototype(line3)
+//There is a __proto__ in the built-in object prototype(line3)
+	//The [[P]] will then have a __proto__ feature
 a1.__proto__ === Foo.prototype;
 a1.__proto__ == a2.__proto__;
 
 //The links between all of these objects are called prototype links => [[Prototype]] => [[P]] for short
-//__proto__ => Dunder proto
+//__proto__ => Dunder proto => getter function => returns the internal prototype linkage 

@@ -38,15 +38,15 @@ for (var i = 0; i < name.length; i++) {
 // initialize variable
 var j = 0;
 
-// boolean expression
-while (j < 5) {
-	step through the loop
-	j++
-	console.log(j); // 1 2 3 4 5
+// // boolean expression
+// while (j < 5) {
+// 	step through the loop
+// 	j++
+// 	console.log(j); // 1 2 3 4 5
 
 	// If the order is console.log(j) THEN j++ => 0 1 2 3 4
 	//The natural is to start at the first category (0), then up to (but not including) the number in the expression (this case)
-}
+// }
 
 while (true) {
 	console.log("Runs once");
@@ -88,12 +88,3 @@ for (var l in studentName) {
 		capSN += studentName[l];
 	}
 }
-
-
-
-
-
-
-
-
-
